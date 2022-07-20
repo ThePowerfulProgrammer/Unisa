@@ -57,11 +57,12 @@ def flights_available():
 
 # begin
 start = 1
-while (start != 0):
-    print("Welcome to COS1511 Flight Booking system")
-    print("Enter fullname ")
-    name = input("")
 
+print("Welcome to COS1511 Flight Booking system")
+print("Enter fullname ")
+name = input("")
+
+while (start != 0):
     # 1st available flight times
     print("The available travel travel times for flights are ")
     flights_available()
