@@ -2,13 +2,10 @@
 
 using namespace std;
 
-// travelTimes
-void travelTimes(string departures[], string arrivals[]) {
-    
-}
+
 
 // main Program 
-string mainProgram() {
+string mainProgram(string departures[], string arrivals[]) {
     string name;
     string surname;
 
@@ -16,7 +13,16 @@ string mainProgram() {
     cin >> name >> surname ;
 
     cout << "The available travel times for flights are " << endl;
-    // travel times function
+    // travel times --> does nothing
+    cout << "    Depart   Arrive" << endl;
+    for (int i = 0; i < 5; i++) {
+        if (i < 2) {
+            cout << i << ".  " << arrivals[i] << "     " << departures[i] << endl;
+        }
+        else {
+            cout << i << ".  " << arrivals[i] << "    " << departures[i] << endl;
+        }
+    }
 
     return "";
 }
@@ -28,6 +34,6 @@ int main() {
     string departures[5] = {"9:30","11:30", "13:30", "15:30", "17:30"};
 
     cout << "Welcome to COS1511 Flight Booking system " << endl << endl;
-    
+    cout << mainProgram(departures, arrivals);
 
 }
