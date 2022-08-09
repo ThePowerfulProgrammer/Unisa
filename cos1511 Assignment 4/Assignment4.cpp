@@ -14,16 +14,28 @@ struct Flight {
 // add A1-I2 to flight.seats[]
 void addSeats(Flight flight) {
     string rows[9] = {"A","B","C", "D", "E", "F", "G", "H", "I"};
-
-    for (int i = 0; i<9;i++) {
+    int seat = 0;
+    
+    // Adds A1 - H6
+    for (int i = 0; i<8;i++) {
         for (int j=0; j<6; j++) {
             string seatNo = "";
             seatNo += rows[i];
             seatNo += to_string(j+1);
-            flight.seats[i] = seatNo;
+            flight.seats[seat] = seatNo;
+            seat ++;
         }
     }
-
+    // Adds I1 - I2
+    for (int i = 0;i<1;i++) {
+        for (int j = 0; j<2; j++) {
+            string seatNo = "";
+            seatNo += rows[i+8];
+            seatNo += to_string(j+1);
+            flight.seats[seat] = seatNo;
+            seat ++;
+        }
+    }
 
 
     for (int i = 0 ;i <50;i++) {
