@@ -9,6 +9,27 @@ struct Flight {
     int bookings; // Number bookings presented at end
     float cost; // Economy/First class
     string bookedSeat; // Chosen seat, changed for each book
+};
+
+// add A1-I2 to flight.seats[]
+void addSeats(Flight flight) {
+    string rows[9] = {"A","B","C", "D", "E", "F", "G", "H", "I"};
+
+    for (int i = 0; i<9;i++) {
+        for (int j=0; j<6; j++) {
+            string seatNo = "";
+            seatNo += rows[i];
+            seatNo += to_string(j+1);
+            flight.seats[i] = seatNo;
+        }
+    }
+
+
+
+    for (int i = 0 ;i <50;i++) {
+        cout << i << " "<< flight.seats[i] <<endl;
+    }
+
 }
 
 // main Program 
@@ -44,15 +65,8 @@ int main() {
 
     cout << "Welcome to COS1511 Flight Booking system " << endl << endl;
     cout << mainProgram(flightTimes);
+    Flight flight1;
 
-    string rows[9] = {"A","B","C", "D", "E", "F", "G", "H", "I"};
-    
-    /*
-    for (int i = 0; i<9;i++) {
-        for (int j=0; j<6; j++) {
-            cout << rows[i] << to_string(j+1) << "   " << endl;
-        }
-    }*/
-
+    addSeats(flight1);
     return 0;
 }
