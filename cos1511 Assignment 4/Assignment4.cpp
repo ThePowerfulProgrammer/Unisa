@@ -39,8 +39,16 @@ void addSeats(Flight & flight) {
 }
 
 void displaySeats(Flight & flight) {
-    for (int i=0; i< 50;i++) {
-        cout << flight.seats[i] << endl;
+    cout << "First class(1920.00)" << endl;
+    for (int i=0;i<50;i++) {
+        if (i == 24) {cout << "Economy class(1600.00)" << endl;}
+        cout << "|" << flight.seats[i] << "|";
+        if (i+1 == 3 || i+1 == 9 || i+1 == 15 || i+1 == 21 || i+1 == 27 || i+1 == 33 || i+1 == 39 || i+1 == 45) {
+            cout << "---" ;
+        }
+        if (i == 5 || i == 11 || i == 17 || i == 23 || i == 29 || i == 35 || i == 41 || i == 47) {
+            cout << endl;
+        }
     }
 }
 
@@ -96,6 +104,31 @@ string mainProgram(string flightTimes[][2]) {
 
     displayFlightTimes(flightTimes);
     flightTime = bookFlight(flightTime);
+
+    // display seats for specifc flight
+    switch (flightTime) {
+        case 1:
+            cout << "The available flights for " << flightTimes[0][0] << " are as follows:" << endl;
+            displaySeats(flight1);
+            break;
+        case 2:
+            cout << "The available flights for " << flightTimes[1][0] << " are as follows:" << endl;
+            displaySeats(flight2);
+            break;
+        case 3:
+            cout << "The available flights for " << flightTimes[2][0] << " are as follows:" << endl;
+            displaySeats(flight3);
+            break;
+        case 4:
+            cout << "The available flights for " << flightTimes[3][0] << " are as follows:" << endl;
+            displaySeats(flight4);
+            break;
+        case 5:
+            cout << "The available flights for " << flightTimes[4][0] << " are as follows:" << endl;
+            displaySeats(flight5);
+            break;
+    }
+
 
 
     return "";
