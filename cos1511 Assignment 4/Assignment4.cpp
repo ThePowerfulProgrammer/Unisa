@@ -12,7 +12,7 @@ struct Flight {
 };
 
 // add A1-I2 to flight.seats[]
-void addSeats(Flight flight) {
+void addSeats(Flight & flight) {
     string rows[9] = {"A","B","C", "D", "E", "F", "G", "H", "I"};
     int seat = 0;
     
@@ -36,22 +36,16 @@ void addSeats(Flight flight) {
             seat ++;
         }
     }
-
-
-    for (int i = 0 ;i <50;i++) {
-        cout << i << " "<< flight.seats[i] <<endl;
-    }
-
 }
 
-// main Program 
-string mainProgram(string flightTimes[][2]) {
-    string name;
-    string surname;
+void displaySeats(Flight & flight) {
+    for (int i=0; i< 50;i++) {
+        cout << flight.seats[i] << endl;
+    }
+}
 
-    cout << "Enter full name" << endl;
-    cin >> name >> surname ;
-
+// display flighttimes
+void displayFlightTimes(string flightTimes[][2]) {
     cout << "The available travel times for flights are " << endl;
     // travel times --> does nothing
     cout << "    Depart   Arrive" << endl;
@@ -67,6 +61,43 @@ string mainProgram(string flightTimes[][2]) {
     }
     cout << endl;
 
+}
+
+int bookFlight(int & flightTime) {
+    cout << "Choose the correct time by entering the option from the displayed list:" << endl;
+    // validation:
+    cin >> flightTime;
+    while (flightTime < 1 || flightTime > 5) {
+        cout << "Incorrect option! Please choose from 1-5." << endl;
+        cin >> flightTime;
+    }
+    return flightTime;
+}
+
+// main Program 
+string mainProgram(string flightTimes[][2]) {
+    string name;
+    string surname;
+    int flightTime;
+    Flight flight1;
+    Flight flight2;
+    Flight flight3;
+    Flight flight4;
+    Flight flight5;
+    // add seats 
+    addSeats(flight1);
+    addSeats(flight2);
+    addSeats(flight3);
+    addSeats(flight4);
+    addSeats(flight5);
+
+    cout << "Enter full name" << endl;
+    cin >> name >> surname ;
+
+    displayFlightTimes(flightTimes);
+    flightTime = bookFlight(flightTime);
+
+
     return "";
 }
 
@@ -77,8 +108,6 @@ int main() {
 
     cout << "Welcome to COS1511 Flight Booking system " << endl << endl;
     cout << mainProgram(flightTimes);
-    Flight flight1;
 
-    addSeats(flight1);
     return 0;
 }
