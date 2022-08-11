@@ -6,7 +6,8 @@ using namespace std;
 struct Flight {
     int flightNumber; // 1 - 5
     string seats[50]; // A1 - I2
-    int bookings; // Number bookings presented at end
+    string bookedSeats[50]; // seats that have been booked
+    int bookings = 0 ; // Number bookings presented at end
     float cost; // Economy/First class
     string bookedSeat; // Chosen seat, changed for each book
 };
@@ -82,6 +83,53 @@ int bookFlight(int & flightTime) {
     return flightTime;
 }
 
+bool checkBookedSeats(Flight & flight, string & seat) {
+    for (int i = 0;i<50;i++) {
+        if (seat == flight.bookedSeats[i]) {
+            return true;
+        } 
+        else {
+            return false;
+        }
+    }
+}
+
+void bookSeat(Flight & flight) {
+    // get seat
+    int n=0; // used to add to booked 
+    string seat;
+    cout << "Please key in a seat number to choose a seat(eg:A2)" << endl;
+    cin >> seat;
+
+    if (checkBookedSeats(flight, seat)) {
+        cout <<  "Sorry that seat is taken. Please choose a seat that is available" << endl;
+        cin >> seat;
+    }
+    
+    // if not ** --> Book seat
+    for (int i = 0; i<50;i++) {
+        if (seat == flight.seats[i]) {
+            flight.seats[i] = "**";
+            flight.bookedSeat = seat;
+            if (i <= 23) {
+                flight.cost = 1920.00;
+            } 
+            else { 
+                flight.cost = 1600.00;
+            }
+            flight.bookings += 1;
+        }
+    }
+    // added to bookedSeats
+    flight.bookedSeats[n] = seat;
+    n +=1;
+}
+
+string displayTicket(string & name,string & travelTicketClass, string & seat, string flightTimes ) {
+    return "";
+}
+
+
 // main Program 
 string mainProgram(string flightTimes[][2]) {
     string name;
@@ -127,6 +175,24 @@ string mainProgram(string flightTimes[][2]) {
             cout << "The available flights for " << flightTimes[4][0] << " are as follows:" << endl;
             displaySeats(flight5);
             break;
+    }
+
+    switch (flightTime) {
+        case 1:
+            bookSeat(flight1);
+            cout << flight1.cost << "  " << flight1.bookedSeat << "  " << flight1.bookings << endl;
+            bookSeat(flight1);
+            cout << flight1.cost << "  " << flight1.bookedSeat << "  " << flight1.bookings << endl;
+            displaySeats(flight1);
+            break;
+        case 2:
+            break;
+        case 3:
+            break;
+        case 4:
+            break;
+        case 5:
+            break;    
     }
 
 
