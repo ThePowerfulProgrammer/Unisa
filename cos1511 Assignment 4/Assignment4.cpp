@@ -1,15 +1,17 @@
 #include <iostream>
 #include <string>
+#include <iomanip>      // std::setprecision
 using namespace std;
-
 
 struct Flight {
     int flightNumber; // 1 - 5
     string seats[50]; // A1 - I2
     string bookedSeats[50]; // seats that have been booked
     int bookings = 0 ; // Number bookings presented at end
-    float cost; // Economy/First class
+    float cost; // 1920.00 // 1600.00
+    string travelTicketClass; // Economy/First class
     string bookedSeat; // Chosen seat, changed for each book
+    string flightTime; // 7.00 -> 15.00
 };
 
 // add A1-I2 to flight.seats[]
@@ -88,10 +90,9 @@ bool checkBookedSeats(Flight & flight, string & seat) {
         if (seat == flight.bookedSeats[i]) {
             return true;
         } 
-        else {
-            return false;
-        }
     }
+    return false;
+   
 }
 
 void bookSeat(Flight & flight) {
@@ -101,7 +102,7 @@ void bookSeat(Flight & flight) {
     cout << "Please key in a seat number to choose a seat(eg:A2)" << endl;
     cin >> seat;
 
-    if (checkBookedSeats(flight, seat)) {
+    while (checkBookedSeats(flight, seat)) {
         cout <<  "Sorry that seat is taken. Please choose a seat that is available" << endl;
         cin >> seat;
     }
@@ -113,9 +114,11 @@ void bookSeat(Flight & flight) {
             flight.bookedSeat = seat;
             if (i <= 23) {
                 flight.cost = 1920.00;
+                flight.travelTicketClass = "First class";
             } 
             else { 
                 flight.cost = 1600.00;
+                flight.travelTicketClass = "Economy class";
             }
             flight.bookings += 1;
         }
@@ -125,8 +128,35 @@ void bookSeat(Flight & flight) {
     n +=1;
 }
 
-string displayTicket(string & name,string & travelTicketClass, string & seat, string flightTimes ) {
-    return "";
+void displayTicket(string & name, string & surname, Flight & flight, string flightTimes[][2], int & flightTime) {
+    cout << "**************************" << endl;
+    cout << "Travel ticket for FLIGHT " << endl;
+    cout << "**************************" << endl;
+    cout << "Name            :    " << name << " " << surname << "                                  " << "Travel ticket class: " << flight.travelTicketClass << endl;
+    cout << "                                                                     Seat No            : " << flight.bookedSeat << endl;
+    cout << "Departure       :    " << "Johannesburg" << "                                    Departure Time     : " << flight.flightTime << endl;
+    
+    switch (flightTime) {
+        case 1:
+            cout << "Destination     :    " << "Cape Town" << "                                       Arrival Time       : " << flightTimes[flightTime-1][1] << endl;
+            break;
+        case 2:
+            cout << "Destination     :    " << "Cape Town" << "                                       Arrival Time       : " << flightTimes[flightTime-1][1] << endl;
+            break;
+        case 3:
+            cout << "Destination     :    " << "Cape Town" << "                                       Arrival Time       : " << flightTimes[flightTime-1][1] << endl;
+            break;
+        case 4:
+            cout << "Destination     :    " << "Cape Town" << "                                       Arrival Time       : " << flightTimes[flightTime-1][1] << endl;
+            break;
+        case 5:
+            cout << "Destination     :    " << "Cape Town" << "                                       Arrival Time       : " << flightTimes[flightTime-1][1] << endl;
+            break;
+    }
+    cout << "************************" << endl;
+    cout << "Amount: R" << flight.cost << " Thank you for booking with COS1511. Your travel agents for queries is Annie Mathew" << endl;
+    cout << "************************" << endl;
+
 }
 
 
@@ -146,6 +176,12 @@ string mainProgram(string flightTimes[][2]) {
     addSeats(flight3);
     addSeats(flight4);
     addSeats(flight5);
+    // add flightTime
+    flight1.flightTime = "7.00";
+    flight2.flightTime = "9.00";
+    flight3.flightTime = "11.00";
+    flight4.flightTime = "13.00";
+    flight5.flightTime = "15.00";
 
     cout << "Enter full name" << endl;
     cin >> name >> surname ;
@@ -180,27 +216,50 @@ string mainProgram(string flightTimes[][2]) {
     switch (flightTime) {
         case 1:
             bookSeat(flight1);
-            cout << flight1.cost << "  " << flight1.bookedSeat << "  " << flight1.bookings << endl;
-            bookSeat(flight1);
-            cout << flight1.cost << "  " << flight1.bookedSeat << "  " << flight1.bookings << endl;
-            displaySeats(flight1);
             break;
         case 2:
+            bookSeat(flight2);
             break;
         case 3:
+            bookSeat(flight3);
             break;
         case 4:
+            bookSeat(flight4);
             break;
         case 5:
+            bookSeat(flight5);
+            break;    
+    }
+    cout << endl;
+
+    // Output ticket    
+
+    switch (flightTime) {
+        case 1:
+            displayTicket(name, surname,flight1, flightTimes, flightTime);
+            break;
+        case 2:
+            displayTicket(name, surname,flight2, flightTimes, flightTime);
+            break;
+        case 3:
+            displayTicket(name, surname,flight3, flightTimes, flightTime);
+            break;
+        case 4:
+            displayTicket(name, surname,flight4, flightTimes, flightTime);
+            break;
+        case 5:
+            displayTicket(name, surname,flight5, flightTimes, flightTime);
             break;    
     }
 
+    
 
 
     return "";
 }
 
 int main() {
+    std::setprecision(2);
     // allowed global vars + size of any other arrays
     float economyTicket = 1600.00;
     string flightTimes[5][2] = {{"7:00","9:30"},{"9:00","11:30"},{"11:00", "13:30"},{"13:00", "15:30"},{"15:00", "17:30"}};
