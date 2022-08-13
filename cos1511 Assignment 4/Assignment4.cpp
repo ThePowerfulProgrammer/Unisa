@@ -182,79 +182,89 @@ string mainProgram(string flightTimes[][2]) {
     flight3.flightTime = "11.00";
     flight4.flightTime = "13.00";
     flight5.flightTime = "15.00";
+    string moreBookings;
+    
+    do {
+        cout << "Enter full name" << endl;
+        cin >> name >> surname ;
+    
+        displayFlightTimes(flightTimes);
+        flightTime = bookFlight(flightTime);
+    
+        // display seats for specifc flight
+        switch (flightTime) {
+            case 1:
+                cout << "The available flights for " << flightTimes[0][0] << " are as follows:" << endl;
+                displaySeats(flight1);
+                break;
+            case 2:
+                cout << "The available flights for " << flightTimes[1][0] << " are as follows:" << endl;
+                displaySeats(flight2);
+                break;
+            case 3:
+                cout << "The available flights for " << flightTimes[2][0] << " are as follows:" << endl;
+                displaySeats(flight3);
+                break;
+            case 4:
+                cout << "The available flights for " << flightTimes[3][0] << " are as follows:" << endl;
+                displaySeats(flight4);
+                break;
+            case 5:
+                cout << "The available flights for " << flightTimes[4][0] << " are as follows:" << endl;
+                displaySeats(flight5);
+                break;
+        }
+    
+        switch (flightTime) {
+            case 1:
+                bookSeat(flight1);
+                break;
+            case 2:
+                bookSeat(flight2);
+                break;
+            case 3:
+                bookSeat(flight3);
+                break;
+            case 4:
+                bookSeat(flight4);
+                break;
+            case 5:
+                bookSeat(flight5);
+                break;    
+        }
+        cout << endl;
+    
+        // Output ticket    
+    
+        switch (flightTime) {
+            case 1:
+                displayTicket(name, surname,flight1, flightTimes, flightTime);
+                break;
+            case 2:
+                displayTicket(name, surname,flight2, flightTimes, flightTime);
+                break;
+            case 3:
+                displayTicket(name, surname,flight3, flightTimes, flightTime);
+                break;
+            case 4:
+                displayTicket(name, surname,flight4, flightTimes, flightTime);
+                break;
+            case 5:
+                displayTicket(name, surname,flight5, flightTimes, flightTime);
+                break;    
+        }
+        cout << "Do you want to make another booking(Y/N)?" << endl;
+        cin >> moreBookings ;
+    } while (moreBookings != "N" );
+        
+    cout << "Number of bookings made for 7.00 a.m:" << flight1.bookings << endl;
+    cout << "Number of bookings made for 9.00 a.m:" << flight2.bookings << endl;
+    cout << "Number of bookings made for 11.00 a.m:" << flight3.bookings << endl;
+    cout << "Number of bookings made for 13.00 p.m:" << flight4.bookings << endl;
+    cout << "Number of bookings made for 15.00 p.m:" << flight5.bookings << endl;
 
-    cout << "Enter full name" << endl;
-    cin >> name >> surname ;
-
-    displayFlightTimes(flightTimes);
-    flightTime = bookFlight(flightTime);
-
-    // display seats for specifc flight
-    switch (flightTime) {
-        case 1:
-            cout << "The available flights for " << flightTimes[0][0] << " are as follows:" << endl;
-            displaySeats(flight1);
-            break;
-        case 2:
-            cout << "The available flights for " << flightTimes[1][0] << " are as follows:" << endl;
-            displaySeats(flight2);
-            break;
-        case 3:
-            cout << "The available flights for " << flightTimes[2][0] << " are as follows:" << endl;
-            displaySeats(flight3);
-            break;
-        case 4:
-            cout << "The available flights for " << flightTimes[3][0] << " are as follows:" << endl;
-            displaySeats(flight4);
-            break;
-        case 5:
-            cout << "The available flights for " << flightTimes[4][0] << " are as follows:" << endl;
-            displaySeats(flight5);
-            break;
-    }
-
-    switch (flightTime) {
-        case 1:
-            bookSeat(flight1);
-            break;
-        case 2:
-            bookSeat(flight2);
-            break;
-        case 3:
-            bookSeat(flight3);
-            break;
-        case 4:
-            bookSeat(flight4);
-            break;
-        case 5:
-            bookSeat(flight5);
-            break;    
-    }
-    cout << endl;
-
-    // Output ticket    
-
-    switch (flightTime) {
-        case 1:
-            displayTicket(name, surname,flight1, flightTimes, flightTime);
-            break;
-        case 2:
-            displayTicket(name, surname,flight2, flightTimes, flightTime);
-            break;
-        case 3:
-            displayTicket(name, surname,flight3, flightTimes, flightTime);
-            break;
-        case 4:
-            displayTicket(name, surname,flight4, flightTimes, flightTime);
-            break;
-        case 5:
-            displayTicket(name, surname,flight5, flightTimes, flightTime);
-            break;    
-    }
 
     
-
-
     return "";
 }
 
