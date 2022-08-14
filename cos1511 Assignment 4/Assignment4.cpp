@@ -162,6 +162,9 @@ void displayTicket(string & name, string & surname, Flight & flight, string flig
 
 // main Program 
 string mainProgram(string flightTimes[][2]) {
+    cout.setf(ios::fixed);
+    cout.precision(4);
+    
     string name;
     string surname;
     int flightTime;
