@@ -46,8 +46,8 @@ void displaySeats(Flight & flight) {
     cout << "First class(1920.00)" << endl;
     
     for (int i=0;i<50;i++) {
+
         if (i == 24) {cout << "Economy class(1600.00)" << endl;}
-        
         cout << "|" << flight.seats[i] << "|";
         if (i+1 == 3 || i+1 == 9 || i+1 == 15 || i+1 == 21 || i+1 == 27 || i+1 == 33 || i+1 == 39 || i+1 == 45) {
             cout << "---" ;
@@ -97,7 +97,7 @@ void bookSeat(Flight & flight) {
         cin >> seat;
     }
     
-    // if not ** --> Book seat, add cost of flight, set travelClass, and add 1 to number of bookings 
+    // if not ** --> Book seat, add cost of flight, set travelClass, and add 1 to number of bookings, ASSUMES user does not choose seat outside A1-I2
     for (int i = 0; i<50;i++) {
         if (seat == flight.seats[i]) {
             flight.seats[i] = "**";
@@ -123,9 +123,10 @@ void displayTicket(string & name, string & surname, Flight & flight, string flig
     cout << "**************************" << endl;
     cout << "Travel ticket for FLIGHT " << endl;
     cout << "**************************" << endl;
-    cout << "Name            :    " << name << " " << surname << "                                  " << "Travel ticket class: " << flight.travelTicketClass << endl;
+    cout << "Name            :    " << name << " " << surname ;
+    cout << "                                  " << "      Travel ticket class: " << flight.travelTicketClass << endl;
     cout << "                                                                     Seat No            : " << flight.bookedSeat << endl;
-    cout << "Departure       :    " << "Johannesburg" << "                                    Departure Time     : " << flight.flightTime << endl;
+    cout << "Departure       :    " << "Johannesburg" << "                                     Departure Time     : " << flight.flightTime << endl;
     
     switch (flightTime) {
         case 1:
