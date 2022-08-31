@@ -126,7 +126,7 @@ void displayTicket(string & name, string & surname, Flight & flight, string flig
     cout << "Name            :    " << name << " " << surname ;
     cout << "                                  " << "      Travel ticket class: " << flight.travelTicketClass << endl;
     cout << "                                                                     Seat No            : " << flight.bookedSeat << endl;
-    cout << "Departure       :    " << "Johannesburg" << "                                     Departure Time     : " << flight.flightTime << endl;
+    cout << "Departure       :    " << "Johannesburg" << "                                    Departure Time     : " << flight.flightTime << endl;
     
     switch (flightTime) {
         case 1:
@@ -267,7 +267,7 @@ string mainProgram(string flightTimes[][2]) {
         }
         cout << "Do you want to make another booking(Y/N)?" << endl;
         cin >> moreBookings ;
-    } while (moreBookings != "N" );
+    } while (moreBookings != "N" || moreBookings !="No" || moreBookings != "no");
         
     cout << "Number of bookings made for 7.00 a.m:" << flight1.bookings << endl;
     cout << "Number of bookings made for 9.00 a.m:" << flight2.bookings << endl;
