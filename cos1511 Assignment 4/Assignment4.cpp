@@ -118,8 +118,8 @@ void bookSeat(Flight & flight) {
     n +=1;
 }
 
-// function to displayTicket reduces redundancy -> needs work
-void displayTicket(string & name, string & surname, Flight & flight, string flightTimes[][2], int & flightTime) {
+// function to displayTicket reduces redundancy -> needs work done on spacing
+void displayTicket(string & name, string & surname, Flight & flight, const string flightTimes[][2], int & flightTime) {
     cout << "**************************" << endl;
     cout << "Travel ticket for FLIGHT " << endl;
     cout << "**************************" << endl;
@@ -152,7 +152,7 @@ void displayTicket(string & name, string & surname, Flight & flight, string flig
 }
 
 // display flighttimes using nested array
-void displayFlightTimes(string flightTimes[][2]) {
+void displayFlightTimes(const string flightTimes[][2]) {
     cout << "The available travel times for flights are " << endl;
     cout << "    Depart   Arrive" << endl;
 
@@ -169,7 +169,7 @@ void displayFlightTimes(string flightTimes[][2]) {
 }
 
 // main Program 
-string mainProgram(string flightTimes[][2]) {
+string mainProgram(const string flightTimes[][2]) {
     cout.setf(ios::fixed);
     cout.precision(4);
     
@@ -267,7 +267,7 @@ string mainProgram(string flightTimes[][2]) {
         }
         cout << "Do you want to make another booking(Y/N)?" << endl;
         cin >> moreBookings ;
-    } while (moreBookings != "N" || moreBookings !="No" || moreBookings != "no");
+    } while ((moreBookings != "N") && (moreBookings !="No") && (moreBookings != "no"));
         
     cout << "Number of bookings made for 7.00 a.m:" << flight1.bookings << endl;
     cout << "Number of bookings made for 9.00 a.m:" << flight2.bookings << endl;
@@ -284,7 +284,7 @@ int main() {
     std::setprecision(2);
     // allowed global vars + size of any other arrays
     float economyTicket = 1600.00;
-    string flightTimes[5][2] = {{"7:00","9:30"},{"9:00","11:30"},{"11:00", "13:30"},{"13:00", "15:30"},{"15:00", "17:30"}};
+    const string flightTimes[5][2] = {{"7:00","9:30"},{"9:00","11:30"},{"11:00", "13:30"},{"13:00", "15:30"},{"15:00", "17:30"}};
 
     cout << "Welcome to COS1511 Flight Booking system " << endl << endl;
     cout << mainProgram(flightTimes);
