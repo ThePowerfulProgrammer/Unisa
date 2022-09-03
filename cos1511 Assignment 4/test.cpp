@@ -45,3 +45,14 @@ int main() {
 
     return 0;
 }
+
+Create struct
+create flight object
+greet user
+user name and surname
+display flight flightTimes
+user input -> flightTime
+Display seats for flightTime
+Book seat 
+assigns value to Flight
+display ticket
