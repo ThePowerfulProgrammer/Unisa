@@ -42,18 +42,6 @@ void addSeats(Flight & flight) {
 }
 
 
-// function to choose flightTime -> flight1-flight5 based on time -> validates user input on flight number 
-int bookFlight(int & flightTime) {
-    cout << "Choose the correct time by entering the option from the displayed list:" << endl;
-    // validation:
-    cin >> flightTime;
-    while (flightTime < 1 || flightTime > 5) {
-        cout << "Incorrect option! Please choose from 1-5." << endl;
-        cin >> flightTime;
-    }
-    return flightTime;
-}
-
 // function to display time options && read and validate user input
 int displayFlightTimes(const string flightTimes[][2]) {
     int flightTime;
@@ -73,6 +61,20 @@ int displayFlightTimes(const string flightTimes[][2]) {
     flightTime = bookFlight(flightTime);
     return flightTime;
 }
+
+// function to choose flightTime -> flight1-flight5 based on time -> validates user input on flight number 
+int bookFlight(int & flightTime) {
+    cout << "Choose the correct time by entering the option from the displayed list:" << endl;
+    // validation:
+    cin >> flightTime;
+    while (flightTime < 1 || flightTime > 5) {
+        cout << "Incorrect option! Please choose from 1-5." << endl;
+        cin >> flightTime;
+    }
+    return flightTime;
+}
+
+
 
 // displays seats A1-I2 work PRE booking and POST booking by making use of an additional array
 void displaySeats(Flight & flight) {
@@ -290,6 +292,7 @@ int main() {
     const string flightTimes[5][2] = {{"7:00","9:30"},{"9:00","11:30"},{"11:00", "13:30"},{"13:00", "15:30"},{"15:00", "17:30"}};
 
     cout << "Welcome to COS1511 Flight Booking system " << endl << endl;
+    // Will read full name via function called within main()
     cout << mainProgram(flightTimes);
 
 }
