@@ -106,8 +106,8 @@ bool checkBookedSeats(Flight & flight, string & seat) {
    
 }
 
-// function to validate and book seat based on user input
-void bookSeat(Flight & flight) {
+// function to validate and book seat based on user input --> Adds additional info for Flight
+void bookSeat(Flight & flight, int economyTicket) {
     // get seat
     int n=0; // used to add to booked array
     string seat;
@@ -119,17 +119,17 @@ void bookSeat(Flight & flight) {
         cin >> seat;
     }
     
-    // if not ** --> Book seat, add cost of flight, set travelClass, and add 1 to number of bookings, ASSUMES user does not choose seat outside A1-I2
+    // if not ** --> Book seat, add cost of flight, set travelClass, and add 1 to number of bookings, ASSUMES user does not choose seat outside A1-I2, not stated to validate in pdf
     for (int i = 0; i<50;i++) {
         if (seat == flight.seats[i]) {
             flight.seats[i] = "**";
             flight.bookedSeat = seat;
             if (i <= 23) {
-                flight.cost = 1920.00;
+                flight.cost = economyTicket + (economyTicket * 0.20);
                 flight.travelTicketClass = "First class";
             } 
             else { 
-                flight.cost = 1600.00;
+                flight.cost = economyTicket;
                 flight.travelTicketClass = "Economy class";
             }
             flight.bookings += 1;
@@ -176,7 +176,7 @@ void displayTicket(string & name, string & surname, Flight & flight, const strin
 
 
 // main Program 
-string mainProgram(const string flightTimes[][2]) {
+string mainProgram(const string flightTimes[][2], int economyTicket) {
     cout.setf(ios::fixed);
     cout.precision(4);
     
@@ -235,19 +235,19 @@ string mainProgram(const string flightTimes[][2]) {
     
         switch (flightTime) {
             case 1:
-                bookSeat(flight1);
+                bookSeat(flight1, economyTicket);
                 break;
             case 2:
-                bookSeat(flight2);
+                bookSeat(flight2, economyTicket);
                 break;
             case 3:
-                bookSeat(flight3);
+                bookSeat(flight3, economyTicket);
                 break;
             case 4:
-                bookSeat(flight4);
+                bookSeat(flight4, economyTicket);
                 break;
             case 5:
-                bookSeat(flight5);
+                bookSeat(flight5, economyTicket);
                 break;    
         }
         cout << endl;
@@ -292,7 +292,11 @@ int main() {
     const string flightTimes[5][2] = {{"7:00","9:30"},{"9:00","11:30"},{"11:00", "13:30"},{"13:00", "15:30"},{"15:00", "17:30"}};
 
     cout << "Welcome to COS1511 Flight Booking system " << endl << endl;
+<<<<<<< HEAD
+    cout << mainProgram(flightTimes, economyTicket);
+=======
     // Will read full name via function called within main()
     cout << mainProgram(flightTimes);
+>>>>>>> b5ffc20b4d5b4ce91f28ca3dbf21d1e0245dbe82
 
 }
