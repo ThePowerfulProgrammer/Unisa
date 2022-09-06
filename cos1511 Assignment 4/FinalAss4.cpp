@@ -150,27 +150,27 @@ void displayTicket(string & name, string & surname, Flight & flight, const strin
     cout << "Travel ticket for FLIGHT " << endl;
     cout << "**************************" << endl;
     cout << "Name            :    " << name << " " << surname ;
-    cout << "                                  " << "      Travel ticket class: " << flight.travelTicketClass << endl;
+    cout << "                                           " << "Travel ticket class: " << flight.travelTicketClass << endl;
 
 
-    cout << "                                                                     Seat No            : " << flight.bookedSeat << endl;
-    cout << "Departure       :    " << "Johannesburg" << "                                    Departure Time     : " << flight.flightTime << endl;
+    cout << "                                                                       Seat No            : " << flight.bookedSeat << endl;
+    cout << "Departure       :    " << "Johannesburg" << "                                      Departure Time     : " << flight.flightTime << endl;
     
     switch (flightTime) {
         case 1:
-            cout << "Destination     :    " << "Cape Town" << "                                       Arrival Time       : " << flightTimes[flightTime-1][1] << endl;
+            cout << "Destination     :    " << "Cape Town" << "                                         Arrival Time       : " << flightTimes[flightTime-1][1] << endl;
             break;
         case 2:
-            cout << "Destination     :    " << "Cape Town" << "                                       Arrival Time       : " << flightTimes[flightTime-1][1] << endl;
+            cout << "Destination     :    " << "Cape Town" << "                                         Arrival Time       : " << flightTimes[flightTime-1][1] << endl;
             break;
         case 3:
-            cout << "Destination     :    " << "Cape Town" << "                                       Arrival Time       : " << flightTimes[flightTime-1][1] << endl;
+            cout << "Destination     :    " << "Cape Town" << "                                         Arrival Time       : " << flightTimes[flightTime-1][1] << endl;
             break;
         case 4:
-            cout << "Destination     :    " << "Cape Town" << "                                       Arrival Time       : " << flightTimes[flightTime-1][1] << endl;
+            cout << "Destination     :    " << "Cape Town" << "                                         Arrival Time       : " << flightTimes[flightTime-1][1] << endl;
             break;
         case 5:
-            cout << "Destination     :    " << "Cape Town" << "                                       Arrival Time       : " << flightTimes[flightTime-1][1] << endl;
+            cout << "Destination     :    " << "Cape Town" << "                                         Arrival Time       : " << flightTimes[flightTime-1][1] << endl;
             break;
     }
     cout << "************************" << endl;
