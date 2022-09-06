@@ -180,16 +180,6 @@ void displayTicket(string & name, string & surname, Flight & flight, const strin
 }
 
 
-// main Program 
-string mainProgram(const string flightTimes[][2], int economyTicket) {
-    cout.setf(ios::fixed);
-    cout.precision(4);
-    
-
-
-    return "";
-}
-
 int main() {
     // allowed gloval vars But I will not use any 
     // all variables here are local to main()
