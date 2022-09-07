@@ -111,6 +111,8 @@ bool checkBookedSeats(Flight & flight, string & seat) {
 // function to validate and book seat based on user input --> Adds additional info for Flight
 void bookSeat(Flight & flight, int economyTicket) {
     // get seat
+    cout.setf(ios::fixed);
+    cout.precision(2);
     int n=0; // used to add to booked array
     string seat;
     cout << "Please key in a seat number to choose a seat(eg:A2)" << endl;
@@ -150,7 +152,7 @@ void displayTicket(string & name, string & surname, Flight & flight, const strin
     cout << "Travel ticket for FLIGHT " << endl;
     cout << "**************************" << endl;
     cout << "Name            :    " << name << " " << surname ;
-    cout << "                                           " << "Travel ticket class: " << flight.travelTicketClass << endl;
+    cout << "                                     " << "Travel ticket class: " << flight.travelTicketClass << endl;
 
 
     cout << "                                                                       Seat No            : " << flight.bookedSeat << endl;
@@ -207,18 +209,21 @@ int main() {
     flight3.flightTime = "11.00";
     flight4.flightTime = "13.00";
     flight5.flightTime = "15.00";
-    string moreBookings;
+
+    string moreBookings; // variable to Continue loop
     
     cout << "Welcome to COS1511 Flight Booking system " << endl << endl;
     
-    
+    // do while loop
     do {
+        // get fullname
         cout << "Enter full name" << endl;
         cin >> name >> surname ;
     
+        // display flight time and book flight
         flightTime = displayFlightTimes(flightTimes);
     
-        // display seats for specifc flight
+        // display seats for specific flight
         switch (flightTime) {
             case 1:
                 cout << "The available flights for " << flightTimes[0][0] << " are as follows:" << endl;
@@ -242,6 +247,7 @@ int main() {
                 break;
         }
     
+
         switch (flightTime) {
             case 1:
                 bookSeat(flight1, economyTicket);
